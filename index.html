@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aman Khan — Data Scientist & Python Developer</title>
+  <meta name="description"
+    content="Portfolio of Aman Khan — Data Scientist, Python Developer. Explore projects, skills, and experience in AI, ML, and data engineering." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader-inner">
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <span class="loader-text">AK</span>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Three.js Canvas -->
+  <canvas id="three-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">AK<span class="logo-dot">.</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" data-text="About">About</a></li>
+        <li><a href="#skills" data-text="Skills">Skills</a></li>
+        <li><a href="#projects" data-text="Projects">Projects</a></li>
+        <li><a href="#experience" data-text="Experience">Experience</a></li>
+        <li><a href="#contact" data-text="Contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul class="mobile-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero" class="section hero-section">
+    <div class="hero-content">
+      <div class="hero-badge" id="hero-badge">
+        <span class="badge-dot"></span> Available for opportunities
+      </div>
+      <h1 class="hero-name" id="hero-name">
+        <span class="name-line"><span class="char-wrap">Aman</span></span>
+        <span class="name-line"><span class="char-wrap">Khan<span class="accent-dot">.</span></span></span>
+      </h1>
+      <p class="hero-subtitle" id="hero-subtitle">Data Scientist <span class="subtitle-sep">|</span> Python Developer
+      </p>
+      <p class="hero-desc" id="hero-desc">Transforming complex data into actionable insights with machine learning, deep
+        learning, and scalable Python solutions.</p>
+      <div class="hero-cta" id="hero-cta">
+        <a href="#projects" class="btn btn-primary" id="btn-projects">
+          <span>View Projects</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="#contact" class="btn btn-secondary" id="btn-contact">
+          <span>Contact Me</span>
+        </a>
+      </div>
+      <div class="hero-scroll-indicator" id="scroll-indicator">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </div>
+    <div class="hero-image-wrap" id="hero-image-wrap">
+      <div class="hero-blob"></div>
+      <div class="hero-img-container">
+        <img src="profile.png" alt="Aman Khan" class="hero-img" />
+      </div>
+      <div class="hero-float hero-float-1">🐍</div>
+      <div class="hero-float hero-float-2">📊</div>
+      <div class="hero-float hero-float-3">🤖</div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">01</span>
+        <h2 class="section-title">About Me</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="about-lead">I'm a passionate <strong>Data Scientist</strong> and <strong>Python Developer</strong>
+            with a deep love for solving real-world problems through data.</p>
+          <p>With expertise spanning machine learning, statistical analysis, and full-stack data pipelines, I build
+            end-to-end solutions that turn raw data into business value. I thrive at the intersection of technology and
+            analytics — whether it's training neural networks, building interactive dashboards, or deploying ML models
+            at scale.</p>
+          <p>When I'm not coding, you'll find me exploring the latest research in AI, contributing to open-source
+            projects, and mentoring aspiring data scientists.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card" id="stat-1">
+            <span class="stat-number" data-target="25">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+          <div class="stat-card" id="stat-2">
+            <span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Technologies</span>
+          </div>
+          <div class="stat-card" id="stat-3">
+            <span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-card" id="stat-4">
+            <span class="stat-number" data-target="5">0</span><span class="stat-suffix">K+</span>
+            <span class="stat-label">Lines of Code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section skills-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">02</span>
+        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-categories">
+        <!-- Languages -->
+        <div class="skill-category">
+          <h3 class="category-title"><span class="cat-icon">⟨/⟩</span> Languages</h3>
+          <div class="skills-grid">
+            <div class="skill-card" data-pct="92">
+              <div class="skill-icon">🐍</div>
+              <h4>Python</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:92%"></div>
+              </div>
+              <span class="skill-pct">92%</span>
+            </div>
+            <div class="skill-card" data-pct="78">
+              <div class="skill-icon">🗃️</div>
+              <h4>SQL</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:78%"></div>
+              </div>
+              <span class="skill-pct">78%</span>
+            </div>
+            <div class="skill-card" data-pct="70">
+              <div class="skill-icon">📜</div>
+              <h4>JavaScript</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:70%"></div>
+              </div>
+              <span class="skill-pct">70%</span>
+            </div>
+            <div class="skill-card" data-pct="65">
+              <div class="skill-icon">📊</div>
+              <h4>R</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:65%"></div>
+              </div>
+              <span class="skill-pct">65%</span>
+            </div>
+          </div>
+        </div>
+        <!-- Frameworks -->
+        <div class="skill-category">
+          <h3 class="category-title"><span class="cat-icon">⚙️</span> Frameworks & Libraries</h3>
+          <div class="skills-grid">
+            <div class="skill-card" data-pct="90">
+              <div class="skill-icon">🧠</div>
+              <h4>TensorFlow</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:90%"></div>
+              </div>
+              <span class="skill-pct">90%</span>
+            </div>
+            <div class="skill-card" data-pct="88">
+              <div class="skill-icon">🔥</div>
+              <h4>PyTorch</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:88%"></div>
+              </div>
+              <span class="skill-pct">88%</span>
+            </div>
+            <div class="skill-card" data-pct="85">
+              <div class="skill-icon">📈</div>
+              <h4>Scikit-Learn</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:85%"></div>
+              </div>
+              <span class="skill-pct">85%</span>
+            </div>
+            <div class="skill-card" data-pct="80">
+              <div class="skill-icon">🐼</div>
+              <h4>Pandas / NumPy</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:80%"></div>
+              </div>
+              <span class="skill-pct">80%</span>
+            </div>
+          </div>
+        </div>
+        <!-- Tools -->
+        <div class="skill-category">
+          <h3 class="category-title"><span class="cat-icon">🛠️</span> Tools & Platforms</h3>
+          <div class="skills-grid">
+            <div class="skill-card" data-pct="82">
+              <div class="skill-icon">🐳</div>
+              <h4>Docker</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:82%"></div>
+              </div>
+              <span class="skill-pct">82%</span>
+            </div>
+            <div class="skill-card" data-pct="75">
+              <div class="skill-icon">☁️</div>
+              <h4>AWS / GCP</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:75%"></div>
+              </div>
+              <span class="skill-pct">75%</span>
+            </div>
+            <div class="skill-card" data-pct="80">
+              <div class="skill-icon">📓</div>
+              <h4>Jupyter / Colab</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:80%"></div>
+              </div>
+              <span class="skill-pct">80%</span>
+            </div>
+            <div class="skill-card" data-pct="72">
+              <div class="skill-icon">🔀</div>
+              <h4>Git / GitHub</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:72%"></div>
+              </div>
+              <span class="skill-pct">72%</span>
+            </div>
+          </div>
+        </div>
+        <!-- Concepts -->
+        <div class="skill-category">
+          <h3 class="category-title"><span class="cat-icon">💡</span> Core Concepts</h3>
+          <div class="skills-grid">
+            <div class="skill-card" data-pct="88">
+              <div class="skill-icon">🤖</div>
+              <h4>Machine Learning</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:88%"></div>
+              </div>
+              <span class="skill-pct">88%</span>
+            </div>
+            <div class="skill-card" data-pct="82">
+              <div class="skill-icon">🧬</div>
+              <h4>Deep Learning</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:82%"></div>
+              </div>
+              <span class="skill-pct">82%</span>
+            </div>
+            <div class="skill-card" data-pct="78">
+              <div class="skill-icon">📖</div>
+              <h4>NLP</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:78%"></div>
+              </div>
+              <span class="skill-pct">78%</span>
+            </div>
+            <div class="skill-card" data-pct="75">
+              <div class="skill-icon">👁️</div>
+              <h4>Computer Vision</h4>
+              <div class="skill-bar">
+                <div class="skill-fill" style="--pct:75%"></div>
+              </div>
+              <span class="skill-pct">75%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section projects-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">03</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card" id="project-1">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <span class="project-num">01</span>
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg></a>
+              </div>
+            </div>
+            <h3 class="project-title">Sentiment Analysis Engine</h3>
+            <p class="project-desc">Real-time NLP pipeline analyzing social media sentiment using transformer models
+              with 94% accuracy on multi-class classification.</p>
+            <div class="project-tech">
+              <span>Python</span><span>BERT</span><span>FastAPI</span><span>Docker</span>
+            </div>
+            <a href="#" class="project-view-btn">View Details →</a>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="project-card" id="project-2">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <span class="project-num">02</span>
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg></a>
+              </div>
+            </div>
+            <h3 class="project-title">Stock Price Predictor</h3>
+            <p class="project-desc">LSTM-based time series forecasting system predicting stock movements with integrated
+              technical indicators and real-time data feeds.</p>
+            <div class="project-tech">
+              <span>Python</span><span>LSTM</span><span>Plotly</span><span>Streamlit</span>
+            </div>
+            <a href="#" class="project-view-btn">View Details →</a>
+          </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="project-card" id="project-3">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <span class="project-num">03</span>
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg></a>
+              </div>
+            </div>
+            <h3 class="project-title">Image Classification API</h3>
+            <p class="project-desc">Production-grade computer vision API with ResNet backbone for classifying medical
+              images, achieving 97% precision on X-ray datasets.</p>
+            <div class="project-tech">
+              <span>PyTorch</span><span>ResNet</span><span>Flask</span><span>AWS</span>
+            </div>
+            <a href="#" class="project-view-btn">View Details →</a>
+          </div>
+        </div>
+        <!-- Project 4 -->
+        <div class="project-card" id="project-4">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <span class="project-num">04</span>
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg></a>
+              </div>
+            </div>
+            <h3 class="project-title">Recommendation System</h3>
+            <p class="project-desc">Hybrid collaborative + content-based recommendation engine serving 10K+ users with
+              sub-100ms response times using Redis caching.</p>
+            <div class="project-tech">
+              <span>Python</span><span>Spark</span><span>Redis</span><span>MongoDB</span>
+            </div>
+            <a href="#" class="project-view-btn">View Details →</a>
+          </div>
+        </div>
+        <!-- Project 5 -->
+        <div class="project-card" id="project-5">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <span class="project-num">05</span>
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg></a>
+              </div>
+            </div>
+            <h3 class="project-title">Data Pipeline Orchestrator</h3>
+            <p class="project-desc">Automated ETL framework processing 5TB+ daily across multiple sources with
+              fault-tolerant scheduling and monitoring dashboards.</p>
+            <div class="project-tech">
+              <span>Airflow</span><span>Python</span><span>PostgreSQL</span><span>Grafana</span>
+            </div>
+            <a href="#" class="project-view-btn">View Details →</a>
+          </div>
+        </div>
+        <!-- Project 6 -->
+        <div class="project-card" id="project-6">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <span class="project-num">06</span>
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg></a>
+              </div>
+            </div>
+            <h3 class="project-title">Chatbot with RAG</h3>
+            <p class="project-desc">Conversational AI assistant using Retrieval-Augmented Generation for domain-specific
+              Q&A with vector database integration and streaming responses.</p>
+            <div class="project-tech">
+              <span>LangChain</span><span>OpenAI</span><span>Pinecone</span><span>React</span>
+            </div>
+            <a href="#" class="project-view-btn">View Details →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section experience-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">04</span>
+        <h2 class="section-title">Experience</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-line"></div>
+        <!-- Item 1 -->
+        <div class="timeline-item" id="exp-1">
+          <div class="timeline-dot"><span class="dot-inner"></span></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2024 — Present</span>
+            <h3 class="timeline-title">Data Scientist</h3>
+            <span class="timeline-company">TechVision AI Labs</span>
+            <p class="timeline-desc">Leading ML initiatives for predictive analytics products. Built and deployed 8+
+              production models serving real-time predictions. Reduced model inference latency by 40% through
+              optimization.</p>
+          </div>
+        </div>
+        <!-- Item 2 -->
+        <div class="timeline-item" id="exp-2">
+          <div class="timeline-dot"><span class="dot-inner"></span></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2023 — 2024</span>
+            <h3 class="timeline-title">ML Engineer Intern</h3>
+            <span class="timeline-company">DataSphere Analytics</span>
+            <p class="timeline-desc">Developed NLP pipelines for text classification and entity extraction. Created
+              automated data quality monitoring dashboards. Contributed to open-source ML toolkit used by 500+
+              developers.</p>
+          </div>
+        </div>
+        <!-- Item 3 -->
+        <div class="timeline-item" id="exp-3">
+          <div class="timeline-dot"><span class="dot-inner"></span></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2022 — 2023</span>
+            <h3 class="timeline-title">Python Developer</h3>
+            <span class="timeline-company">CodeCraft Solutions</span>
+            <p class="timeline-desc">Built scalable REST APIs and microservices in Python. Implemented CI/CD pipelines
+              and containerized applications. Mentored junior developers and conducted code reviews.</p>
+          </div>
+        </div>
+        <!-- Item 4 -->
+        <div class="timeline-item" id="exp-4">
+          <div class="timeline-dot"><span class="dot-inner"></span></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2021 — 2022</span>
+            <h3 class="timeline-title">Research Assistant</h3>
+            <span class="timeline-company">University AI Lab</span>
+            <p class="timeline-desc">Conducted research in deep learning for medical image analysis. Published 2 papers
+              on novel architectures for X-ray classification. Managed GPU cluster for distributed training experiments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">05</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="contact-lead">Have a project in mind or want to collaborate? I'd love to hear from you.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <span>aman.khan@email.com</span>
+            </div>
+            <div class="contact-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>New Delhi, India</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link" id="social-linkedin" aria-label="LinkedIn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+            <a href="#" class="social-link" id="social-github" aria-label="GitHub">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+            </a>
+            <a href="#" class="social-link" id="social-twitter" aria-label="Twitter/X">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <input type="text" id="form-name" placeholder=" " required />
+            <label for="form-name">Your Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="form-email" placeholder=" " required />
+            <label for="form-email">Your Email</label>
+          </div>
+          <div class="form-group">
+            <textarea id="form-message" rows="5" placeholder=" " required></textarea>
+            <label for="form-message">Your Message</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-submit" id="btn-submit">
+            <span>Send Message</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container footer-inner">
+      <span class="footer-copy">© 2026 Aman Khan. Crafted with passion.</span>
+      <a href="#hero" class="back-to-top" id="back-to-top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="18 15 12 9 6 15" />
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
