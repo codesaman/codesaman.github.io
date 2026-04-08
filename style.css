@@ -97,6 +97,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  /* overflow-x must live on html, NOT body — body overflow breaks
+     position:fixed in Safari / GitHub Pages (creates new stacking ctx) */
+  overflow-x: hidden;
 }
 
 body {
@@ -104,11 +107,20 @@ body {
   background: var(--gradient-bg);
   color: var(--text-primary);
   min-height: 100vh;
-  overflow-x: hidden;
-  cursor: none;
+  /* cursor: none applied only on non-touch devices via JS */
   line-height: 1.6;
   transition: background 0.4s ease, color 0.3s ease;
 }
+
+/* Hide native cursor only when JS has confirmed a mouse device */
+body.has-mouse { cursor: none; }
+body.has-mouse a,
+body.has-mouse button,
+body.has-mouse [role="button"],
+body.has-mouse input,
+body.has-mouse textarea,
+body.has-mouse select,
+body.has-mouse label { cursor: none; }
 
 /* ─── Scrollbar ─────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
@@ -117,39 +129,55 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: var(--purple-400); }
 
 /* ─── Custom Cursor ──────────────────────────── */
+/*
+  Key fixes for GitHub Pages / production:
+  1. NO mix-blend-mode — causes invisible cursor on many bg colours
+  2. Start opacity:0, fade in on first mousemove (avoids (0,0) flash)
+  3. position:fixed works because overflow-x is now on <html> not <body>
+*/
 .cursor {
   width: 14px; height: 14px;
   background: var(--purple-400);
   border-radius: 50%;
   position: fixed;
-  top: 0; left: 0;
+  top: -100px; left: -100px;        /* off-screen until first move */
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: width 0.3s, height 0.3s, background 0.3s;
-  mix-blend-mode: multiply;
+  transform: translate(-50%, -50%);
+  opacity: 0;                        /* hidden until JS activates */
+  transition: width 0.25s ease, height 0.25s ease,
+              opacity 0.3s ease, background 0.25s ease;
+  will-change: left, top;
 }
-[data-theme="dark"] .cursor { mix-blend-mode: difference; }
+.cursor.cursor-active { opacity: 1; } /* JS adds this on first move */
+
 .cursor-trail {
-  width: 36px; height: 36px;
-  border: 1.5px solid var(--purple-400);
+  width: 38px; height: 38px;
+  border: 2px solid var(--purple-400);
   border-radius: 50%;
   position: fixed;
-  top: 0; left: 0;
+  top: -100px; left: -100px;
   pointer-events: none;
   z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: left 0.12s ease-out, top 0.12s ease-out, width 0.3s, height 0.3s, opacity 0.3s;
-  opacity: 0.6;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease, width 0.25s ease,
+              height 0.25s ease, border-color 0.25s ease;
+  will-change: left, top;
 }
-.cursor.cursor-hover { width: 20px; height: 20px; }
-.cursor-trail.cursor-hover { width: 50px; height: 50px; opacity: 0.3; }
+.cursor-trail.cursor-active { opacity: 0.55; }
+
+.cursor.cursor-hover       { width: 22px;  height: 22px; }
+.cursor-trail.cursor-hover { width: 54px;  height: 54px; opacity: 0.25; }
 
 /* ─── Background Canvas ─────────────────────── */
 #bgCanvas {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  /* z-index MUST be negative so it is always behind every page element.
+     A fixed canvas at z-index:0 can overtake in-flow content in Safari
+     and GitHub Pages / production builds. */
+  z-index: -1;
   pointer-events: none;
   transition: opacity 0.4s;
 }
@@ -268,7 +296,7 @@ body {
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 1000;
+  z-index: 9000;   /* well above canvas(-1), cursor(9998/9999), sections */
   padding: 16px 0;
   transition: all 0.3s ease;
 }
@@ -351,7 +379,8 @@ body {
 /* ─── SECTION BASE ──────────────────────────── */
 .section {
   position: relative;
-  z-index: 10;
+  z-index: 10;        /* above canvas(-1) */
+  isolation: isolate; /* new stacking context per section */
   padding: 100px 0;
 }
 .section-container {
@@ -397,7 +426,8 @@ body {
   margin: 0 auto;
   gap: 3rem;
   position: relative;
-  z-index: 10;
+  z-index: 10;          /* above canvas(-1), below navbar(9000) */
+  isolation: isolate;   /* creates new stacking context; content never clips */
 }
 .hero-content { flex: 1; max-width: 620px; }
 
@@ -1082,8 +1112,12 @@ body {
 
   .footer-content { flex-direction: column; text-align: center; }
   .timeline { padding-left: 24px; }
-  body { cursor: auto; }
-  .cursor, .cursor-trail { display: none; }
+  /* On touch/mobile screens restore the native cursor */
+  body.has-mouse { cursor: auto; }
+  body.has-mouse a, body.has-mouse button,
+  body.has-mouse input, body.has-mouse textarea,
+  body.has-mouse label { cursor: auto; }
+  .cursor, .cursor-trail { display: none !important; }
 }
 @media (max-width: 480px) {
   .section { padding: 70px 0; }
