@@ -159,29 +159,68 @@ let particleScene, particleMaterial;
 
 
 // ─── Custom Cursor ────────────────────────────────────────────────────────────
+/*
+  Fixes for GitHub Pages / production deployment:
+  ─ Only enable on true pointer:fine devices (real mouse, not touch)
+  ─ Add .has-mouse to <body> so CSS cursor:none only fires on mouse users
+  ─ Reveal cursor on first mousemove (opacity 0→1), avoiding (0,0) flash
+  ─ No mix-blend-mode; use direct pixel positioning for reliability
+*/
 (function initCursor() {
   const cursor      = document.getElementById('cursor');
   const cursorTrail = document.getElementById('cursorTrail');
-  if (!cursor) return;
+  if (!cursor || !cursorTrail) return;
 
-  let cx = 0, cy = 0, tx = 0, ty = 0;
+  // Detect if device has a real mouse pointer
+  const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+  if (!hasFinePointer) return; // touch device — leave native cursor alone
 
-  document.addEventListener('mousemove', (e) => {
-    tx = e.clientX; ty = e.clientY;
-    cursor.style.left = tx + 'px';
-    cursor.style.top  = ty + 'px';
-  });
+  // Confirm mouse device to CSS
+  document.body.classList.add('has-mouse');
+
+  let cx = 0, cy = 0, tx = -200, ty = -200;
+  let activated = false;
+  let rafId;
 
   function moveCursorTrail() {
-    cx += (tx - cx) * 0.12;
-    cy += (ty - cy) * 0.12;
+    cx += (tx - cx) * 0.13;
+    cy += (ty - cy) * 0.13;
     cursorTrail.style.left = cx + 'px';
     cursorTrail.style.top  = cy + 'px';
-    requestAnimationFrame(moveCursorTrail);
+    rafId = requestAnimationFrame(moveCursorTrail);
   }
   moveCursorTrail();
 
-  document.querySelectorAll('a, button, .tilt-card, .skill-tag, .tech-chip').forEach(el => {
+  document.addEventListener('mousemove', (e) => {
+    tx = e.clientX;
+    ty = e.clientY;
+
+    // Direct pixel position for the dot — fastest and most reliable
+    cursor.style.left = tx + 'px';
+    cursor.style.top  = ty + 'px';
+
+    // Reveal on first real movement
+    if (!activated) {
+      activated = true;
+      cursor.classList.add('cursor-active');
+      cursorTrail.classList.add('cursor-active');
+    }
+  });
+
+  // Hide when mouse leaves the window
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity   = '0';
+    cursorTrail.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    if (activated) {
+      cursor.style.opacity   = '1';
+      cursorTrail.style.opacity = '0.55';
+    }
+  });
+
+  // Hover states
+  document.querySelectorAll('a, button, .tilt-card, .skill-tag, .tech-chip, .theme-toggle').forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursor.classList.add('cursor-hover');
       cursorTrail.classList.add('cursor-hover');
